@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 01 — Baselines</title>
+</head>
+<body>
+  <a href="/projects/project-01-satellite-downlink-rl/">← Project TOC</a>
+  <h1>03 — Baselines & Metrics</h1>
+
+  <h2>Baseline policies (no RL)</h2>
+  <ol>
+    <li><b>Best Available Link</b>: choose GS with max link_quality among available ones</li>
+    <li><b>Random Available</b>: random choice among available GSs</li>
+    <li><b>Always-0</b>: always pick GS 0 (sanity check)</li>
+  </ol>
+
+  <h2>Metrics to log every episode</h2>
+  <ul>
+    <li>Total reward</li>
+    <li>Total sent data (throughput)</li>
+    <li>Total energy used</li>
+    <li>Failure count (unavailable selections)</li>
+  </ul>
+
+  <h2>Output format (simple)</h2>
+  <p>Write a CSV per run, e.g.:</p>
+  <pre>
+episode,total_reward,total_sent,total_energy,fails
+0,12.3,18.0,5.0,2
+1,10.8,16.5,4.8,1
+  </pre>
+
+  <hr />
+  <p>
+    <a href="./02-environment.html">Prev: 02 — Environment</a> |
+    <a href="./04-dqn.html">Next: 04 — DQN</a>
+  </p>
+</body>
+</html>

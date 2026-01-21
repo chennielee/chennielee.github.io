@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 01 — Environment</title>
+</head>
+<body>
+  <a href="/projects/project-01-satellite-downlink-rl/">← Project TOC</a>
+  <h1>02 — Environment (State / Action / Reward)</h1>
+
+  <h2>Scope (toy version)</h2>
+  <ul>
+    <li>1 satellite</li>
+    <li>N ground stations (start with N=3)</li>
+    <li>Discrete time steps</li>
+  </ul>
+
+  <h2>State (observation)</h2>
+  <ul>
+    <li><b>backlog</b>: amount of data waiting (normalize 0..1)</li>
+    <li><b>battery</b>: remaining energy budget (0..1)</li>
+    <li><b>gs_available[i]</b>: is GS i visible now? (0/1)</li>
+    <li><b>link_quality[i]</b>: quality of link to GS i (0..1)</li>
+  </ul>
+
+  <h2>Action</h2>
+  <p>Choose one ground station: <b>a ∈ {0..N-1}</b></p>
+
+  <h2>Transition (what happens)</h2>
+  <ul>
+    <li>If chosen GS is available: send some data, backlog decreases, battery decreases.</li>
+    <li>If unavailable: sending fails (penalty), backlog stays.</li>
+    <li>Optionally: link quality changes over time (simple random or sinusoid).</li>
+  </ul>
+
+  <h2>Reward (starter version)</h2>
+  <p>
+    <b>reward = sent_data − λ * energy_cost − fail_penalty</b>
+  </p>
+  <ul>
+    <li><b>sent_data</b>: e.g., proportional to link_quality if successful</li>
+    <li><b>energy_cost</b>: constant or proportional to sent_data</li>
+    <li><b>fail_penalty</b>: fixed negative value if action fails</li>
+    <li><b>λ (lambda)</b>: trade-off knob (start with 0.1)</li>
+  </ul>
+
+  <hr />
+  <p>
+    <a href="./01-overview.html">Prev: 01 — Overview</a> |
+    <a href="./03-baselines.html">Next: 03 — Baselines</a>
+  </p>
+</body>
+</html>
